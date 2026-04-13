@@ -20,7 +20,6 @@ class _HomePageState extends State<HomePage> {
       MaterialPageRoute(builder: (context) => FormularioCadastro()),
     ).then((resultado) {
       if (resultado != null) {
-        // estava dando problema. Então pedi pra IA dar uma olhada, e ela fez isso 👍
         setState(() {
           if (resultado['tipo'] == 'Escolaridade') {
             escolaridades.add(resultado['texto']);
