@@ -53,10 +53,11 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(height: 16),
             Text(
-              'Olá, meu nome é Bernardo Pellizzaro Horn. Sou um desenvolvedor apaixonado pela tecnologia e pelo inter.',
+              'Olá, meu nome é Bernardo Pellizzaro Horn. Sou um desenvolvedor apaixonado pela tecnologia.',
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 30),
+
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -72,7 +73,9 @@ class _HomePageState extends State<HomePage> {
                 minimumSize: Size(double.infinity, 50),
               ),
             ),
+
             SizedBox(height: 10),
+
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -143,7 +146,9 @@ class _FormularioCadastroState extends State<FormularioCadastro> {
                 });
               },
             ),
+
             SizedBox(height: 20),
+
             TextField(
               controller: textoController,
               decoration: InputDecoration(
@@ -151,7 +156,9 @@ class _FormularioCadastroState extends State<FormularioCadastro> {
                 border: OutlineInputBorder(),
               ),
             ),
+
             SizedBox(height: 20),
+
             ElevatedButton(
               onPressed: () {
                 if (textoController.text.isNotEmpty) {
@@ -170,23 +177,36 @@ class _FormularioCadastroState extends State<FormularioCadastro> {
   }
 }
 
-class EscolaridadePage extends StatelessWidget {
+class EscolaridadePage extends StatefulWidget {
   final List<String> lista;
 
   EscolaridadePage({required this.lista});
 
   @override
+  _EscolaridadePageState createState() => _EscolaridadePageState();
+}
+
+class _EscolaridadePageState extends State<EscolaridadePage> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Escolaridade")),
-      body: lista.isEmpty
+      body: widget.lista.isEmpty
           ? Center(child: Text("Nenhuma escolaridade cadastrada"))
           : ListView.builder(
-              itemCount: lista.length,
+              itemCount: widget.lista.length,
               itemBuilder: (context, index) {
                 return ListTile(
                   leading: Icon(Icons.school),
-                  title: Text(lista[index]),
+                  title: Text(widget.lista[index]),
+                  trailing: IconButton(
+                    icon: Icon(Icons.delete),
+                    onPressed: () {
+                      setState(() {
+                        widget.lista.removeAt(index);
+                      });
+                    },
+                  ),
                 );
               },
             ),
@@ -194,23 +214,36 @@ class EscolaridadePage extends StatelessWidget {
   }
 }
 
-class ProjetosPage extends StatelessWidget {
+class ProjetosPage extends StatefulWidget {
   final List<String> lista;
 
   ProjetosPage({required this.lista});
 
   @override
+  _ProjetosPageState createState() => _ProjetosPageState();
+}
+
+class _ProjetosPageState extends State<ProjetosPage> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Projetos")),
-      body: lista.isEmpty
+      body: widget.lista.isEmpty
           ? Center(child: Text("Nenhum projeto cadastrado"))
           : ListView.builder(
-              itemCount: lista.length,
+              itemCount: widget.lista.length,
               itemBuilder: (context, index) {
                 return ListTile(
                   leading: Icon(Icons.work),
-                  title: Text(lista[index]),
+                  title: Text(widget.lista[index]),
+                  trailing: IconButton(
+                    icon: Icon(Icons.delete),
+                    onPressed: () {
+                      setState(() {
+                        widget.lista.removeAt(index);
+                      });
+                    },
+                  ),
                 );
               },
             ),
@@ -218,23 +251,36 @@ class ProjetosPage extends StatelessWidget {
   }
 }
 
-class RecomendacoesPage extends StatelessWidget {
+class RecomendacoesPage extends StatefulWidget {
   final List<String> lista;
 
   RecomendacoesPage({required this.lista});
 
   @override
+  _RecomendacoesPageState createState() => _RecomendacoesPageState();
+}
+
+class _RecomendacoesPageState extends State<RecomendacoesPage> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Recomendações")),
-      body: lista.isEmpty
+      body: widget.lista.isEmpty
           ? Center(child: Text("Nenhuma recomendação cadastrada"))
           : ListView.builder(
-              itemCount: lista.length,
+              itemCount: widget.lista.length,
               itemBuilder: (context, index) {
                 return ListTile(
                   leading: Icon(Icons.thumb_up),
-                  title: Text(lista[index]),
+                  title: Text(widget.lista[index]),
+                  trailing: IconButton(
+                    icon: Icon(Icons.delete),
+                    onPressed: () {
+                      setState(() {
+                        widget.lista.removeAt(index);
+                      });
+                    },
+                  ),
                 );
               },
             ),
